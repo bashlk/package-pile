@@ -1,5 +1,6 @@
 import frameworks from './frameworks.json';
 import get from 'lodash/fp/get';
+import keys from 'lodash/keys';
 
 const API_RESPONSE_DELAY = 2000;
 
@@ -16,6 +17,9 @@ const fetchData = (entity, id) => {
 }
 
 const apiObject = {
+    getFrameworkIds: () => (
+        keys(frameworks)
+    ),
     getFrameworkById: id => (
         fetchData('framework', id)
     ),
