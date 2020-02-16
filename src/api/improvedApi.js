@@ -4,27 +4,29 @@ import get from 'lodash/fp/get';
 const API_RESPONSE_DELAY = 2000;
 
 const improvedFetchData = entity => {
-    let status = 'pending';
-    let result;
-    let suspender;
+    let status = {};
+    let result = {};
+    let suspender = {};
 
     return {
       getById(id) {
-        if(!suspender){
+        const key = `${entity}-${id}`;
+        if(!suspender[key]){
+            status[key] = 'pending';
             console.log(`Starting to fetch ${entity}`);
-            suspender = new Promise((resolve, reject) => {
+            suspender[key] = new Promise((resolve, reject) => {
                 setTimeout(() => {
                     console.warn(`Finished fetching ${entity}`)
-                    status = 'success';
-                    result = get([id, entity], frameworks);
-                    resolve(result);
+                    status[key] = 'success';
+                    result[key] = get([id, entity], frameworks);
+                    resolve(result[key]);
                 }, API_RESPONSE_DELAY);
             })
         }
-        if (status === 'pending') {
-          throw suspender;
-        } else if (status === 'success') {
-          return result;
+        if (status[key] === 'pending') {
+          throw suspender[key];
+        } else if (status[key] === 'success') {
+          return result[key];
         }
       }
     };
