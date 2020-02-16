@@ -12,7 +12,6 @@ import { Loader } from '../../../components'
 const useStyles = makeStyles(theme => ({
     content: {
         color: '#586069',
-        position: 'relative',
     }
 }))
 

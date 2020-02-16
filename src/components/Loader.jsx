@@ -3,17 +3,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
-    container: {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-    }
+    container: ({ fullHeight }) => ({
+        height: fullHeight ? '100vh' : 'auto',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    })
 }))
 
 
-const Loader = () => {
-    const classes = useStyles();
+const Loader = ({ fullHeight }) => {
+    const classes = useStyles({ fullHeight });
     return (
         <div className={classes.container}>
             <CircularProgress />

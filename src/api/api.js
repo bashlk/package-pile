@@ -15,18 +15,19 @@ const fetchData = (entity, id) => {
     });
 }
 
-export const getFrameworkById = (id) => {
-    return fetchData('framework', id);
+const apiObject = {
+    getFrameworkById: id => (
+        fetchData('framework', id)
+    ),
+    getGithubById: id => (
+        fetchData('github', id)
+    ),
+    getNpmById: id => (
+        fetchData('npm', id)
+    ),
+    getBundlephobiaById: id => (
+        fetchData('bundlephobia', id)
+    ),
 }
 
-export const getGithubById = (id) => {
-    return fetchData('github', id);
-}
-
-export const getNpmById = (id) => {
-    return fetchData('npm', id);
-}
-
-export const getBundlephobiaById = (id) => {
-    return fetchData('bundlephobia', id)
-}
+export default apiObject;

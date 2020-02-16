@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import GithubIcon from '@material-ui/icons/GitHub';
 import PackageIcon from '@material-ui/icons/CardGiftcard';
 import WeightIcon from '@material-ui/icons/FitnessCenter';
-import { getFrameworkById, getGithubById, getNpmById, getBundlephobiaById } from '../../api';
+import { Api } from '../../api';
 import { Loader } from '../../components';
 import { MetaCard } from './components';
 
@@ -35,7 +35,7 @@ const Detail = () => {
     const [currentFrameworkId] = useState('react');
     
     useEffect(() => {
-        getFrameworkById(currentFrameworkId).then(framework => {
+        Api.getFrameworkById(currentFrameworkId).then(framework => {
             setFramework(framework);
         })
     }, [currentFrameworkId])
@@ -56,22 +56,22 @@ const Detail = () => {
                         <MetaCard
                             frameworkId={currentFrameworkId}
                             renderIcon={() => <GithubIcon />}
-                            getMeta={getGithubById}
+                            getMeta={Api.getGithubById}
                         />
                         <MetaCard
                             frameworkId={currentFrameworkId}
                             renderIcon={() => <PackageIcon />}
-                            getMeta={getNpmById}
+                            getMeta={Api.getNpmById}
                         />
                         <MetaCard
                             frameworkId={currentFrameworkId}
                             renderIcon={() => <WeightIcon />}
-                            getMeta={getBundlephobiaById}
+                            getMeta={Api.getBundlephobiaById}
                         />                        
                     </>
                     )
                     : (
-                        <Loader/>
+                        <Loader fullHeight/>
                     )
                 }
             </Grid>
