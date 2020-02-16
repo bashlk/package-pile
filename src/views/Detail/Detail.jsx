@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import GithubIcon from '@material-ui/icons/GitHub';
 import PackageIcon from '@material-ui/icons/CardGiftcard';
 import WeightIcon from '@material-ui/icons/FitnessCenter';
-import { getFrameworkById } from '../../api';
+import { getFrameworkById, getGithubById, getNpmById, getBundlephobiaById } from '../../api';
+import { Loader } from '../../components';
 import { MetaCard } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -31,17 +32,19 @@ const useStyles = makeStyles(theme => ({
 const Detail = () => {
     const classes = useStyles();
     const [framework, setFramework] = useState(null);
+    const [currentFrameworkId] = useState('react');
     
     useEffect(() => {
-        getFrameworkById('react').then(framework => {
+        getFrameworkById(currentFrameworkId).then(framework => {
             setFramework(framework);
         })
-    })
+    }, [currentFrameworkId])
     
     return (
         <div className={classes.root}>
              <Grid container spacing={3}>
-                {framework && (
+                {framework 
+                    ? (
                     <>
                         <Grid item xs={12} className={classes.header}>
                             <img className={classes.logo} src={framework.logo} alt={`${framework.name}-logo`} />
@@ -50,11 +53,27 @@ const Detail = () => {
                                 <Typography variant="subtitle1" component="p" className={classes.description}>{framework.description}</Typography>
                             </div>
                         </Grid>
-                        <MetaCard renderIcon={() => <GithubIcon />} meta={framework.github} />
-                        <MetaCard renderIcon={() => <PackageIcon />} meta={framework.npm}/>
-                        <MetaCard renderIcon={() => <WeightIcon />} meta={framework.bundlephobia} />                        
+                        <MetaCard
+                            frameworkId={currentFrameworkId}
+                            renderIcon={() => <GithubIcon />}
+                            getMeta={getGithubById}
+                        />
+                        <MetaCard
+                            frameworkId={currentFrameworkId}
+                            renderIcon={() => <PackageIcon />}
+                            getMeta={getNpmById}
+                        />
+                        <MetaCard
+                            frameworkId={currentFrameworkId}
+                            renderIcon={() => <WeightIcon />}
+                            getMeta={getBundlephobiaById}
+                        />                        
                     </>
-                )}
+                    )
+                    : (
+                        <Loader/>
+                    )
+                }
             </Grid>
         </div>
     )

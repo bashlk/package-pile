@@ -1,13 +1,15 @@
-[
-    {
-        "id": "react",
-        "name": "React",
-        "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
-        "logo": "/logos/react.png",
+{
+    "react": {
+        "framework": {
+            "id": "react",
+            "name": "React",
+            "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+            "logo": "/logos/react.png"
+        },
         "github": {
             "repository": "facebook/react",
             "stars": "144,000",
-            "forks": "27,600"
+            "forks": "27,6s00"
         },
         "npm": {
             "packageName": "react",
@@ -20,4 +22,4 @@
             "minifiedGziped": "2.6KB"
         }
     }
-]
+}
