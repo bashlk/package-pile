@@ -1,0 +1,48 @@
+{
+    "react": {
+        "framework": {
+            "id": "react",
+            "name": "React",
+            "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+            "logo": "/logos/react.png"
+        },
+        "github": {
+            "repository": "facebook/react",
+            "stars": "144,000",
+            "forks": "27,600"
+        },
+        "npm": {
+            "packageName": "react",
+            "latestVersion": "16.12.0",
+            "weeklyDownloads": "6,831,273",
+            "dependants": "51,624"
+        },
+        "bundlephobia": {
+            "minified": "6.4KB",
+            "minifiedGziped": "2.6KB"
+        }
+    },
+    "vue": {
+        "framework": {
+            "id": "vue",
+            "name": "Vue.js",
+            "description": "Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. ",
+            "logo": "/logos/vue.png"
+        },
+        "github": {
+            "repository": "vuejs/vue",
+            "stars": "157,000",
+            "forks": "23,700"
+        },
+        "npm": {
+            "packageName": "vue",
+            "latestVersion": "2.6.11",
+            "weeklyDownloads": "1,423,257",
+            "dependants": "23,407"
+        },
+        "bundlephobia": {
+            "minified": "63.5KB",
+            "minifiedGziped": "22.8KB"
+        }
+    }
+}
